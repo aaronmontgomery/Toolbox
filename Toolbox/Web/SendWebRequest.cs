@@ -23,8 +23,9 @@ namespace Toolbox
 
             catch (Exception exception)
             {
-                ILogger logger = new LoggerFactory().CreateLogger("Toolbox.Web.SendWebRequest");
-                logger.LogError(exception, "", new object[] { });
+                new LoggerFactory()
+                    .CreateLogger("Toolbox.Web.SendWebRequest")
+                    .LogError(exception, "", new object[] { });
             }
 
             return null;
