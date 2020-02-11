@@ -10,10 +10,8 @@ namespace Toolbox.Cryptography
         /// </summary>
         public static string GenerateHash(string password, string salt)
         {
-            using (SHA512Managed sha = new SHA512Managed())
-            {
-                return Encoding.UTF8.GetString(sha.ComputeHash(Encoding.UTF8.GetBytes(string.Concat(password, salt))));
-            }
+            using SHA512Managed sha = new SHA512Managed();
+            return Encoding.UTF8.GetString(sha.ComputeHash(Encoding.UTF8.GetBytes(string.Concat(password, salt))));
         }
     }
 }
