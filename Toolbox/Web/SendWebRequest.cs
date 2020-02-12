@@ -1,5 +1,4 @@
 ﻿using System.Net;
-using System.Threading.Tasks;
 using System.Collections.Generic;
 
 namespace Toolbox
@@ -9,11 +8,11 @@ namespace Toolbox
         /// <summary>
         /// 
         /// </summary>
-        public static async Task<IEnumerable<object>> SendWebRequest(WebRequest webRequest)
+        public static IEnumerable<object> SendWebRequest(WebRequest webRequest)
         {
             using WebResponse webResponse = webRequest.GetResponse();
             using System.IO.Stream stream = webResponse.GetResponseStream();
-            return await Stream.ReadAsync(stream);
+            return Stream.Read(stream);
         }
     }
 }
