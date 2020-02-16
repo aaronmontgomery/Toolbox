@@ -10,8 +10,7 @@
         /// <returns>byte[]</returns>
         public static byte[] Add(byte[] byte1, byte[] byte2)
         {
-            byte[] b = (byte1.Magnitude(256) + byte2.Magnitude(256)).Vector(256);
-            return new byte[] { };
+            return (byte1.Magnitude(256) + byte2.Magnitude(256)).Vector(256);
         }
     }
 }
