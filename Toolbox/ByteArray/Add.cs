@@ -5,12 +5,28 @@
         /// <summary>
         /// Adds byte arrays
         /// </summary>
-        /// <param name="byte1"></param>
-        /// <param name="byte2"></param>
-        /// <returns>byte[]</returns>
-        public static byte[] Add(byte[] byte1, byte[] byte2)
+        /// <param name="byteArray1"></param>
+        /// <param name="byteArray2"></param>
+        /// <returns></returns>
+        public static byte[] Add(byte[] byteArray1, byte[] byteArray2)
         {
-            return (byte1.Magnitude(256) + byte2.Magnitude(256)).Vector(256);
+            switch (byteArray1)
+            {
+                case null:
+                    throw new System.ArgumentNullException("Toolbox.ByteArray.Add: parameter cannot be null, byte[] byteArray1");
+                case byte[] b when byteArray1.Length == 0:
+                    throw new System.ArgumentException("Toolbox.ByteArray.Add: parameter cannot be empty, byte[] byteArray1");
+            }
+
+            switch (byteArray2)
+            {
+                case null:
+                    throw new System.ArgumentNullException("Toolbox.ByteArray.Add:  parameter cannot be null, byte[] byteArray2");
+                case byte[] b when byteArray2.Length == 0:
+                    throw new System.ArgumentException("Toolbox.ByteArray.Add: parameter cannot be empty, byte[] byteArray2");
+            }
+
+            return (byteArray1.Magnitude(256) + byteArray2.Magnitude(256)).Vector(256);
         }
     }
 }

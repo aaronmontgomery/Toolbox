@@ -1,21 +1,35 @@
-﻿using System;
-
-namespace Toolbox
+﻿namespace Toolbox
 {
     public static partial class ByteArray
     {
         /// <summary>
-        /// 
+        /// Converts byte array to scalar
         /// </summary>
-        public static double Magnitude(this byte[] b, int bits)
+        /// <param name="byteArray"></param>
+        /// <param name="bits"></param>
+        /// <returns></returns>
+        public static double Magnitude(this byte[] byteArray, int bits)
         {
-            double m = 0;
-            for (int i = 0; i < b.Length; i++)
+            switch (byteArray)
             {
-                m += b[i] * Math.Pow(bits, b.Length - i - 1);
+                case null:
+                    throw new System.ArgumentNullException("Toolbox.ByteArray.Magnitude: parameter cannot be null, byte[] byteArray");
+                case byte[] b when byteArray.Length == 0:
+                    throw new System.ArgumentException("Toolbox.ByteArray.Magnitude: parameter cannot be empty, byte[] byteArray");
             }
 
-            return m;
+            if (bits <= 0)
+            {
+                throw new System.ArgumentException("Toolbox.ByteArray.Magnitude: parameter must be greater than 0, int bits");
+            }
+
+            double magnitude = 0;
+            for (int i = 0; i < byteArray.Length; i++)
+            {
+                magnitude += byteArray[i] * System.Math.Pow(bits, byteArray.Length - i - 1);
+            }
+
+            return magnitude;
         }
     }
 }

@@ -3,17 +3,27 @@
     public static partial class ByteArray
     {
         /// <summary>
-        /// Performs bitwise NOT operation unsigned
+        /// Bitwise NOT operation
         /// </summary>
-        public static byte[] Not(this byte[] b)
+        /// <param name="byteArray"></param>
+        /// <returns></returns>
+        public static byte[] Not(this byte[] byteArray)
         {
-            byte[] r = new byte[b.Length];
-            for (int i = 0; i < b.Length; i++)
+            switch (byteArray)
             {
-                r[i] = (byte)~b[i];
+                case null:
+                    throw new System.ArgumentNullException("Toolbox.ByteArray.Not: parameter cannot be null, byte[] byteArray");
+                case byte[] b when byteArray.Length == 0:
+                    throw new System.ArgumentException("Toolbox.ByteArray.Not: parameter cannot be empty, byte[] byteArray");
             }
 
-            return r;
+            byte[] result = new byte[byteArray.Length];
+            for (int i = 0; i < byteArray.Length; i++)
+            {
+                result[i] = (byte)~byteArray[i];
+            }
+
+            return result;
         }
     }
 }

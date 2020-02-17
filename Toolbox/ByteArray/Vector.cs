@@ -7,24 +7,43 @@ namespace Toolbox
         /// <summary>
         /// 
         /// </summary>
-        public static byte[] Vector(this double m, int bits)
+        /// <param name="magnitude"></param>
+        /// <param name="bits"></param>
+        /// <returns></returns>
+        public static byte[] Vector(this double magnitude, int bits)
         {
-            if (m != 0)
+            if (bits > 0)
             {
-                byte[] r = new byte[(int)Math.Ceiling(Math.Log(m, bits))];
-                for (int i = 0; i < r.Length; i++)
+                if (magnitude > 0)
                 {
-                    double f = Math.Pow(bits, r.Length - i - 1);
-                    r[i] = (byte)(m / f);
-                    m -= r[i] * f;
+                    byte[] result = new byte[(int)Math.Ceiling(Math.Log(magnitude, bits))];
+                    for (int i = 0; i < result.Length; i++)
+                    {
+                        double factor = Math.Pow(bits, result.Length - i - 1);
+                        result[i] = (byte)(magnitude / factor);
+                        magnitude -= result[i] * factor;
+                    }
+
+                    return result;
                 }
 
-                return r;
+                else
+                {
+                    if (magnitude == 0)
+                    {
+                        return new byte[] { 0 };
+                    }
+
+                    else
+                    {
+                        throw new ArgumentException("Toolbox.ByteArray.Vector: parameter must be greater than 0, double magnitude");
+                    }
+                }
             }
 
             else
             {
-                return new byte[] { 0 };
+                throw new ArgumentException("Toolbox.ByteArray.Vector: parameter must be greater than 0, int bits");
             }
         }
     }

@@ -3,13 +3,32 @@
     public static partial class ByteArray
     {
         /// <summary>
-        /// Inserts zero values at ending indices
+        /// Inserts zero values in last indices
         /// </summary>
-        public static byte[] InsertTrailingZeros(byte[] b, int length)
+        /// <param name="byteArray"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static byte[] InsertTrailingZeros(byte[] byteArray, int length)
         {
-            byte[] r = new byte[length];
-            b.CopyTo(r, 0);
-            return r;
+            switch (byteArray)
+            {
+                case null:
+                    throw new System.ArgumentNullException("Toolbox.ByteArray.InsertTrailingZeros: parameter cannot be null, byte[] byteArray");
+                case byte[] b when byteArray.Length == 0:
+                    throw new System.ArgumentException("Toolbox.ByteArray.InsertTrailingZeros: parameter cannot be empty, byte[] byteArray");
+            }
+
+            if (length > byteArray.Length)
+            {
+                byte[] result = new byte[length];
+                byteArray.CopyTo(result, 0);
+                return result;
+            }
+
+            else
+            {
+                return byteArray;
+            }
         }
     }
 }

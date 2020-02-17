@@ -3,13 +3,32 @@
     public static partial class ByteArray
     {
         /// <summary>
-        /// Inserts zero values at beginning indices
+        /// Inserts zeros and beginning indices in a ByteArray
         /// </summary>
-        public static byte[] InsertLeadingZeros(byte[] b, int length)
+        /// <param name="byteArray"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static byte[] InsertLeadingZeros(byte[] byteArray, int length)
         {
-            byte[] r = new byte[length];
-            b.CopyTo(r, r.Length - b.Length);
-            return r;
+            switch (byteArray)
+            {
+                case null:
+                    throw new System.ArgumentNullException("Toolbox.ByteArray.InsertLeadingZeros: parameter cannot be null, byte[] byteArray");
+                case byte[] b when byteArray.Length == 0:
+                    throw new System.ArgumentException("Toolbox.ByteArray.InsertLeadingZeros: parameter cannot be empty, byte[] byteArray");
+            }
+
+            if (length > byteArray.Length)
+            {
+                byte[] result = new byte[length];
+                byteArray.CopyTo(result, result.Length - byteArray.Length);
+                return result;
+            }
+
+            else
+            {
+                return byteArray;
+            }
         }
     }
 }

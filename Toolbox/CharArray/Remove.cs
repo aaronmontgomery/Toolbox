@@ -3,14 +3,25 @@
     public static partial class CharArray
     {
         /// <summary>
-        /// 
+        /// Returns a new string with characters removed
         /// </summary>
-        /// <param name="s"></param>
-        /// <param name="items"></param>
-        /// <returns></returns>
-        public static string Remove(this string s, char[] items)
+        /// <param name="s">The string to be modified</param>
+        /// <param name="charsToRemove">The characters to be removed</param>
+        public static string Remove(this string s, char[] charsToRemove)
         {
-            foreach (char c in items)
+            switch (s)
+            {
+                case null:
+                    throw new System.ArgumentNullException("Toolbox.ByteArray.Remove: parameter cannot be null, string s");
+            }
+
+            switch (charsToRemove)
+            {
+                case null:
+                    throw new System.ArgumentNullException("Toolbox.ByteArray.Remove: parameter cannot be null, char[] charsToRemove");
+            }
+
+            foreach (char c in charsToRemove)
             {
                 s = s.Replace(c.ToString(), string.Empty);
             }

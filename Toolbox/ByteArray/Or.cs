@@ -3,17 +3,36 @@
     public static partial class ByteArray
     {
         /// <summary>
-        /// Performs bitwise OR operation
+        /// Bitwise OR operation
         /// </summary>
-        public static byte[] Or(byte[] b1, byte[] b2)
+        /// <param name="byteArray1"></param>
+        /// <param name="byteArray2"></param>
+        /// <returns></returns>
+        public static byte[] Or(byte[] byteArray1, byte[] byteArray2)
         {
-            byte[] r = new byte[b1.Length];
-            for (int i = 0; i < b1.Length; i++)
+            switch (byteArray1)
             {
-                r[i] = (byte)((int)b1[i] | (int)b2[i]);
+                case null:
+                    throw new System.ArgumentNullException("Toolbox.ByteArray.Or: parameter cannot be null, byte[] byteArray1");
+                case byte[] b when byteArray1.Length == 0:
+                    throw new System.ArgumentException("Toolbox.ByteArray.Or: parameter cannot be empty, byte[] byteArray1");
             }
 
-            return r;
+            switch (byteArray2)
+            {
+                case null:
+                    throw new System.ArgumentNullException("Toolbox.ByteArray.Or: parameter cannot be null, byte[] byteArray2");
+                case byte[] b when byteArray2.Length == 0:
+                    throw new System.ArgumentException("Toolbox.ByteArray.Or: parameter cannot be empty, byte[] byteArray2");
+            }
+
+            byte[] result = new byte[byteArray1.Length];
+            for (int i = 0; i < byteArray1.Length; i++)
+            {
+                result[i] = (byte)((int)byteArray1[i] | (int)byteArray2[i]);
+            }
+
+            return result;
         }
     }
 }
