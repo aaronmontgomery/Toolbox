@@ -1,6 +1,6 @@
 ﻿namespace Toolbox
 {
-    public static partial class Integer
+    public static partial class Numerical
     {
         /// <summary>
         /// 
