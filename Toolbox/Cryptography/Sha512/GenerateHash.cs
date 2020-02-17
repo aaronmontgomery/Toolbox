@@ -8,6 +8,9 @@ namespace Toolbox.Cryptography
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="password"></param>
+        /// <param name="salt"></param>
+        /// <returns></returns>
         public static string GenerateHash(string password, string salt)
         {
             using SHA512Managed sha = new SHA512Managed();

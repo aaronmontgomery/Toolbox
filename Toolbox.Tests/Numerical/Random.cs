@@ -7,21 +7,21 @@ namespace Numerical
     public static partial class Random
     {
         [TestCase(5, 10)]
-        public static void Random_WithXAndTolerance_XIsWithinTolerance(int x, int tolerance)
+        public static void Random_WithXAndRange_TrueXIsWithinRange(int x, int range)
         {
-            Assert.That(x.Random(tolerance).Between(x - tolerance, x + tolerance));
+            Assert.That(x.Random(range).Between(x - range, x + range));
         }
 
         [TestCase(0, 0)]
-        public static void Random_WithXZero_Zero(int x, int tolerance)
+        public static void Random_WithXZero_TrueXIsZero(int x, int range)
         {
-            Assert.That(x.Random(tolerance) == 0);
+            Assert.That(x.Random(range) == 0);
         }
 
         [TestCase(10, 0)]
-        public static void Random_WithToleranceZero_Ten(int x, int tolerance)
+        public static void Random_WithRangeZero_TrueXIsTen(int x, int range)
         {
-            Assert.That(x.Random(tolerance) == 10);
+            Assert.That(x.Random(range) == 10);
         }
     }
 }

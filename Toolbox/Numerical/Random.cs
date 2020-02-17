@@ -4,9 +4,15 @@ namespace Toolbox
 {
     public static partial class Numerical
     {
-        public static int Random(this int x, int tolerance)
+        /// <summary>
+        /// Generates a random integer within a range
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="range"></param>
+        /// <returns></returns>
+        public static int Random(this int x, int range)
         {
-            return new Random().Next(x - tolerance, x + tolerance);
+            return new Random().Next(x - range, x + range);
         }
     }
 }

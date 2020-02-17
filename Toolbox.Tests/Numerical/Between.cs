@@ -8,7 +8,7 @@ namespace Numerical
     {
         [TestCase(0, 0, 0)]
         [TestCase(int.MinValue, 0, int.MaxValue)]
-        public static void Between_WithInt_False(int x, int min, int max)
+        public static void Between_WithInt_FalseXIsNotBetweenMinAndMax(int x, int min, int max)
         {
             Assert.IsFalse(x.Between(min, max));
         }
@@ -17,7 +17,7 @@ namespace Numerical
         [TestCase(0, int.MinValue, int.MaxValue)]
         //[TestCase(long.MinValue, long.MaxValue, 0)]
         //[TestCase(double.MinValue, double.MaxValue, 0)]
-        public static void Between_WithInt_True(int x, int min, int max)
+        public static void Between_WithInt_TrueXIsBetweenMinAndMax(int x, int min, int max)
         {
             Assert.IsTrue(x.Between(min, max));
         }
