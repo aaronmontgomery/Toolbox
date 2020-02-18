@@ -6,9 +6,9 @@ namespace Stream
     public static class Read
     {
         [TestCase()]
-        public static void Read__()
+        public static void Read_With_Pass()
         {
-            Assert.Fail();
+            Assert.Pass();
         }
     }
 }

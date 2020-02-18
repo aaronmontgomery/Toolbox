@@ -6,20 +6,23 @@ namespace Toolbox
     public static partial class Network
     {
         /// <summary>
-        /// Generate list of ip in subnet
+        /// Generate a list of IP Addresses within a subnet
         /// </summary>
-        public static IEnumerable<IPAddress> SubnetRange(byte[] subnetIp, byte[] subnetMask)
+        /// <param name="subnetIpBytes"></param>
+        /// <param name="subnetMaskBytes"></param>
+        /// <returns></returns>
+        public static IEnumerable<IPAddress> SubnetRange(byte[] subnetIpBytes, byte[] subnetMaskBytes)
         {
-            List<IPAddress> r = new List<IPAddress>();
-            byte[] i = ByteArray.And(subnetIp, subnetMask);
-            double h = subnetMask.Not().Magnitude(256);
-            for (; h >= 0; h--)
+            List<IPAddress> ipAddresses = new List<IPAddress>();
+            byte[] ipBytes = ByteArray.And(subnetIpBytes, subnetMaskBytes);
+            double hosts = subnetMaskBytes.Not().Magnitude(256);
+            for (; hosts >= 0; hosts--)
             {
-                r.Add(new IPAddress(i));
-                i = ByteArray.Add(i, new byte[] { 1 });
+                ipAddresses.Add(new IPAddress(ipBytes));
+                ipBytes = ByteArray.Add(ipBytes, new byte[] { 1 });
             }
 
-            return r;
+            return ipAddresses;
         }
     }
 }
