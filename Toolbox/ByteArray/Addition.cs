@@ -8,22 +8,22 @@
         /// <param name="byteArray1"></param>
         /// <param name="byteArray2"></param>
         /// <returns></returns>
-        public static byte[] Add(byte[] byteArray1, byte[] byteArray2)
+        public static byte[] Addition(byte[] byteArray1, byte[] byteArray2)
         {
             switch (byteArray1)
             {
                 case null:
-                    throw new System.ArgumentNullException("Toolbox.ByteArray.Add: parameter cannot be null, byte[] byteArray1");
+                    throw new System.ArgumentNullException("Toolbox.ByteArray.Addition: parameter cannot be null, byte[] byteArray1");
                 case byte[] b when byteArray1.Length == 0:
-                    throw new System.ArgumentException("Toolbox.ByteArray.Add: parameter cannot be empty, byte[] byteArray1");
+                    throw new System.ArgumentException("Toolbox.ByteArray.Addition: parameter cannot be empty, byte[] byteArray1");
             }
 
             switch (byteArray2)
             {
                 case null:
-                    throw new System.ArgumentNullException("Toolbox.ByteArray.Add:  parameter cannot be null, byte[] byteArray2");
+                    throw new System.ArgumentNullException("Toolbox.ByteArray.Addition:  parameter cannot be null, byte[] byteArray2");
                 case byte[] b when byteArray2.Length == 0:
-                    throw new System.ArgumentException("Toolbox.ByteArray.Add: parameter cannot be empty, byte[] byteArray2");
+                    throw new System.ArgumentException("Toolbox.ByteArray.Addition: parameter cannot be empty, byte[] byteArray2");
             }
 
             return (byteArray1.Magnitude(256) + byteArray2.Magnitude(256)).Vector(256);

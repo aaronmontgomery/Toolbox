@@ -19,7 +19,7 @@ namespace Toolbox
             for (; hosts >= 0; hosts--)
             {
                 ipAddresses.Add(new IPAddress(ipBytes));
-                ipBytes = ByteArray.Add(ipBytes, new byte[] { 1 });
+                ipBytes = ByteArray.Addition(ipBytes, new byte[] { 1 });
             }
 
             return ipAddresses;
