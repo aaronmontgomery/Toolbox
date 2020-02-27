@@ -6,6 +6,7 @@
     <Authors>Aaron Montgomery</Authors>
     <Product />
     <NeutralLanguage />
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
